@@ -8,6 +8,7 @@ public class Game {
     private boolean gameOver;
     private boolean hasExtraLife;
     private boolean hasSecondChance;
+    private Random randomInitializer;
 
     public Game() {
         boxes = new ArrayList<>(12);
@@ -17,12 +18,12 @@ public class Game {
         gameOver = false;
         hasExtraLife = false;
         hasSecondChance = false;
+        randomInitializer = new Random();
 
         fillBoxes();
     }
 
     private void fillBoxes() {
-        Random rand = new Random();
 
         int hundred = 1;
         int five = 5;
@@ -33,7 +34,7 @@ public class Game {
         int all = 12;
 
         while (all > 0) {
-            int chance = rand.nextInt(all);
+            int chance = randomInitializer.nextInt(all);
 
             if (chance < hundred) {
                 boxes.add(new Box(100));
@@ -59,13 +60,11 @@ public class Game {
         }
     }
 
-    private int addToTreasury(int reward) {
+    private void addToTreasury(int reward) {
         treasury += reward;
-
-        return treasury;
     }
 
-    public boolean isGameOver() {
+    private boolean isGameOver() {
         return gameOver;
     }
 
@@ -74,7 +73,6 @@ public class Game {
     }
 
     public void playGame() {
-        Random randomInitializer = new Random();
 
         while (!isGameOver()) {
             int counter = boxes.size();
@@ -107,14 +105,13 @@ public class Game {
     }
 
     private Box getAdditionalReward() {
-        Random rand = new Random();
         int numberOfPossibleRewards = 4;
 
         if (hasSecondChance) {
             numberOfPossibleRewards = 3;
         }
 
-        int rewardChoice = rand.nextInt(numberOfPossibleRewards);
+        int rewardChoice = randomInitializer.nextInt(numberOfPossibleRewards);
         Box additionalReward;
 
         switch(rewardChoice) {
