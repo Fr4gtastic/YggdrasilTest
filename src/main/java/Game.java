@@ -13,7 +13,6 @@ public class Game {
     public Game() {
         boxes = new ArrayList<>(12);
 
-        fillBoxes();
         treasury = 0;
         gameOver = false;
         hasExtraLife = false;
