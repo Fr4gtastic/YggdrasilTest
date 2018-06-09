@@ -1,9 +1,8 @@
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Game {
 
-    private ArrayList<Box> boxes;
+    private BoxesHolder boxesHolder;
     private int treasury;
     private boolean gameOver;
     private boolean hasExtraLife;
@@ -11,52 +10,12 @@ public class Game {
     private Random randomInitializer;
 
     public Game() {
-        boxes = new ArrayList<>(12);
-
+        boxesHolder = new BoxesHolder(1, 2, 5, 1, 3);
         treasury = 0;
         gameOver = false;
         hasExtraLife = false;
         hasSecondChance = false;
         randomInitializer = new Random();
-
-        fillBoxes();
-    }
-
-    private void fillBoxes() {
-
-        int hundred = 1;
-        int five = 5;
-        int twenty = 2;
-        int life = 1;
-        int over = 3;
-
-        int all = 12;
-
-        while (all > 0) {
-            int chance = randomInitializer.nextInt(all);
-
-            if (chance < hundred) {
-                boxes.add(new Box(100));
-                hundred--;
-                all--;
-            } else if (chance >= hundred && chance < five + hundred) {
-                boxes.add(new Box(5));
-                five--;
-                all--;
-            } else if (chance >= five + hundred && chance < twenty + five + hundred) {
-                boxes.add(new Box(20));
-                twenty--;
-                all--;
-            } else if (chance >= twenty + five + hundred && chance < life + twenty + five + hundred) {
-                boxes.add(new Box(Bonus.EXTRA_LIFE));
-                life--;
-                all--;
-            } else if(chance < all) {
-                boxes.add(new Box(Bonus.GAME_OVER));
-                over--;
-                all--;
-            }
-        }
     }
 
     private void addToTreasury(int reward) {
@@ -74,9 +33,9 @@ public class Game {
     public void playGame() {
 
         while (!isGameOver()) {
-            int counter = boxes.size();
+            int counter = boxesHolder.getSize();
             int selection = randomInitializer.nextInt(counter);
-            Box chosenBox = boxes.remove(selection);
+            Box chosenBox = boxesHolder.removeFromHolder(selection);
 
             if (chosenBox.getBonus() == null) {
                 addToTreasury(chosenBox.getReward());
