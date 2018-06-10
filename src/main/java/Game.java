@@ -10,20 +10,13 @@ public class Game {
     private Random randomInitializer;
 
     public Game() {
-        boxesHolder = new BoxesHolder(1, 2, 5, 1, 3);
+        boxesHolder = new BoxesHolder();
         treasury = 0;
         gameOver = false;
         hasExtraLife = false;
         hasSecondChance = false;
         randomInitializer = new Random();
-    }
-
-    private void addToTreasury(int reward) {
-        treasury += reward;
-    }
-
-    private boolean isGameOver() {
-        return gameOver;
+        fillBoxes(1, 2, 5, 1, 3);
     }
 
     public int getTreasury() {
@@ -85,6 +78,24 @@ public class Game {
         }
 
         return additionalReward;
+    }
+
+    private void fillBoxes(int hundreds, int twenties, int fives, int lives, int gameOvers) {
+
+        boxesHolder.addToHolder(hundreds, new Box(100));
+        boxesHolder.addToHolder(twenties, new Box(20));
+        boxesHolder.addToHolder(fives, new Box(5));
+        boxesHolder.addToHolder(lives, new Box(Bonus.EXTRA_LIFE));
+        boxesHolder.addToHolder(gameOvers, new Box(Bonus.GAME_OVER));
+        boxesHolder.shuffleBoxes();
+    }
+
+    private void addToTreasury(int reward) {
+        treasury += reward;
+    }
+
+    private boolean isGameOver() {
+        return gameOver;
     }
 
 }

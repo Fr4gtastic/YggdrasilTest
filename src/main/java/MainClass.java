@@ -7,7 +7,7 @@ public class MainClass {
 
     private static double calculateAverage() {
 
-        Integer sum = 0;
+        int sum = 0;
 
         for (Integer integer : listOfRewards) {
             sum += integer;
