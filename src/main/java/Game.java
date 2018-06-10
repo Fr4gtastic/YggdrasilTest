@@ -23,6 +23,18 @@ public class Game {
         return treasury;
     }
 
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public boolean isHasExtraLife() {
+        return hasExtraLife;
+    }
+
+    public boolean isHasSecondChance() {
+        return hasSecondChance;
+    }
+
     public void playGame() {
 
         while (!isGameOver()) {
@@ -92,10 +104,6 @@ public class Game {
 
     private void addToTreasury(int reward) {
         treasury += reward;
-    }
-
-    private boolean isGameOver() {
-        return gameOver;
     }
 
 }

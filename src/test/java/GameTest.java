@@ -1,4 +1,6 @@
+import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 
 public class GameTest {
 
@@ -7,6 +9,14 @@ public class GameTest {
     @Before
     public void setUp() {
         game = new Game();
+    }
+
+    @Test
+    public void playGameTest() {
+        game.playGame();
+        Assert.assertTrue(game.isGameOver());
+        Assert.assertFalse(game.isHasExtraLife());
+        Assert.assertTrue(game.getTreasury() >= 0);
     }
 
 }
