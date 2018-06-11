@@ -35,8 +35,4 @@ public class BoxesHolder {
         holder.clear();
     }
 
-    public boolean isEmpty() {
-        return holder.isEmpty();
-    }
-
 }

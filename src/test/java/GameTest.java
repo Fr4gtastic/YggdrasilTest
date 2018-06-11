@@ -15,7 +15,6 @@ public class GameTest {
     public void playGameTest() {
         game.playGame();
         Assert.assertTrue(game.isGameOver());
-        Assert.assertTrue(game.isHolderEmpty());
         Assert.assertTrue(game.getTreasury() >= 0);
     }
 

@@ -35,10 +35,6 @@ public class Game {
         return hasSecondChance;
     }
 
-    public boolean isHolderEmpty() {
-        return boxesHolder.isEmpty();
-    }
-
     public void playGame() {
 
         while (!isGameOver()) {
