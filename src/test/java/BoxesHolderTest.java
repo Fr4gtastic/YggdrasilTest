@@ -1,6 +1,7 @@
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
 
 public class BoxesHolderTest {
 
@@ -28,4 +29,8 @@ public class BoxesHolderTest {
         Assert.assertEquals(size - 1, boxesHolder.getSize());
     }
 
+    @AfterEach
+    public void clear() {
+        boxesHolder.emptyHolder();
+    }
 }

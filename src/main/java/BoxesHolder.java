@@ -31,4 +31,12 @@ public class BoxesHolder {
         return holder.get(index);
     }
 
+    public void emptyHolder() {
+        holder.clear();
+    }
+
+    public boolean isEmpty() {
+        return holder.isEmpty();
+    }
+
 }

@@ -15,7 +15,7 @@ public class GameTest {
     public void playGameTest() {
         game.playGame();
         Assert.assertTrue(game.isGameOver());
-        Assert.assertFalse(game.isHasExtraLife());
+        Assert.assertTrue(game.isHolderEmpty());
         Assert.assertTrue(game.getTreasury() >= 0);
     }
 
